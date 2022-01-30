@@ -21,12 +21,12 @@ public class LambdaStepsTest {
         step("Открываем главную страницу gitHub", () -> {
             open("https://github.com/");
         });
-        step("Ищем репозиторий" + REPOSITORY, () -> {
+        step("Ищем репозиторий " + REPOSITORY, () -> {
             $(".header-search-input").click();
             $(".header-search-input").sendKeys(REPOSITORY);
             $(".header-search-input").submit();
         });
-        step("Переходим в репозиторий" + REPOSITORY, () -> {
+        step("Переходим в репозиторий " + REPOSITORY, () -> {
             $(linkText(REPOSITORY)).click();
         });
         step("Открываем таб Issues", () -> {

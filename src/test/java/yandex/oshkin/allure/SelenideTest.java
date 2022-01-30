@@ -1,6 +1,8 @@
 package yandex.oshkin.allure;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.withText;
@@ -13,18 +15,16 @@ public class SelenideTest {
 
     @Test
     public void testIssueSearch() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
 
-        //Открываем главную страницу gitHub
         open("https://github.com/");
-        //Ищем репозиторий
+
         $(".header-search-input").click();
         $(".header-search-input").sendKeys("DmitryOshkin/qa_guru_homework_6");
         $(".header-search-input").submit();
-        //Переходим в репозиторий
+
         $(linkText("DmitryOshkin/qa_guru_homework_6")).click();
-        //Открываем таб Issues
         $(partialLinkText("Issues")).click();
-        //Проверяем наличие Issues с именем
         $(withText("number 2")).should(Condition.visible);
     }
 }
