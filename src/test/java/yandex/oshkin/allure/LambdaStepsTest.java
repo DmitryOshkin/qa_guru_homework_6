@@ -3,6 +3,7 @@ package yandex.oshkin.allure;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Allure;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.withText;
@@ -19,6 +20,12 @@ public class LambdaStepsTest {
 
     @Test
     public void lambdaTestIssueSearch() {
+
+        Allure.label("owner", "DmitryOshkin");
+        Allure.feature("Issues");
+        Allure.story("Поиск Issue в репозитории");
+        Allure.label("severity", SeverityLevel.NORMAL.value());
+        Allure.link("GitHub", "https://github.com/");
 
         step("Открываем главную страницу gitHub", () -> {
             open("https://github.com/");
