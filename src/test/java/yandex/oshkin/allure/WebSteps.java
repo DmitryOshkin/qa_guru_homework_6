@@ -1,7 +1,11 @@
 package yandex.oshkin.allure;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+
+import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
@@ -36,5 +40,10 @@ public class WebSteps {
     @Step("Проверяем наличие Issues с именем 'number {number}'")
     public void shouldSeeIssueWithNumber(int number) {
         $(withText("number " + number)).should(Condition.visible);
+    }
+
+    @Attachment(value = "Screenshot", type = "text/html", fileExtension = "html")
+    public byte[] attachPageSource() {
+        return WebDriverRunner.source().getBytes(StandardCharsets.UTF_8);
     }
 }

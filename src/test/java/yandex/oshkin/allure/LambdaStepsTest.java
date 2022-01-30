@@ -1,6 +1,8 @@
 package yandex.oshkin.allure;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.withText;
@@ -30,6 +32,7 @@ public class LambdaStepsTest {
             $(linkText(REPOSITORY)).click();
         });
         step("Открываем таб Issues", () -> {
+            Allure.addAttachment("Page Source", "text/html", WebDriverRunner.source(), "html");
             $(partialLinkText("Issues")).click();
         });
         step("Проверяем наличие Issues с именем 'number " + NUMBER + "'", () -> {
