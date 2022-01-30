@@ -24,7 +24,7 @@ public class LambdaStepsTest {
         Allure.label("owner", "DmitryOshkin");
         Allure.feature("Issues");
         Allure.story("Поиск Issue в репозитории");
-        Allure.label("severity", SeverityLevel.NORMAL.value());
+        Allure.label("severity", SeverityLevel.BLOCKER.value());
         Allure.link("GitHub", "https://github.com/");
 
         step("Открываем главную страницу gitHub", () -> {
